@@ -1,0 +1,1473 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/14/2021 5:09:06 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BRALMS01ETL"
+  DTS:CreatorName="BRDTCSHVGAS\gabriel.quintella"
+  DTS:DTSID="{C04E5430-6BC1-4797-A265-DFB6F2FD0BFE}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7507.2"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="04_Importa_Cargos_Derived_Column"
+  DTS:PackageType="5"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{2AAE6C13-595A-4CC5-8FCE-1DF9F9C432CB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0B9AF96D-B141-4A79-93FB-37153181EC71}"
+      DTS:ObjectName="DS_SQLServer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;User ID=usrdbaassists;Initial Catalog=DBDBAASSISTS;Provider=SQLNCLI11.1;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKrb6N5nKskWvdfZriaIAjQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAB+jcQwZaf4zGwnqh+a3tPOAAAAAASAAACgAAAAEAAAAPU1pWmauXsIOQosHe+weWAgAAAA8RmllDm0D9xfdBrZa/k5JzDCKEA7NW4XqBuJg735QWEUAAAAix/vVGPJxTr36g+g20hsoYoz/Ts</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FFS_ArquivoVagas]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B097C45D-C132-4BCB-9E1F-F8698B7BC2BC}"
+      DTS:ObjectName="FFS_ArquivoVagas">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\gabriel.quintella\Downloads\consulta_vagas_2020_AC.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_GERACAO"
+              DTS:DTSID="{5B1E7D8F-B644-4683-AAFB-75D56BA2CF51}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HH_GERACAO"
+              DTS:DTSID="{9D94254B-7E3D-4CAD-954D-C1F6B4363E18}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ANO_ELEICAO"
+              DTS:DTSID="{1883E414-68ED-4A48-A85B-03503F6A6F79}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_TIPO_ELEICAO"
+              DTS:DTSID="{13D08B04-0128-4C6D-914C-8DC447B2C7BF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_TIPO_ELEICAO"
+              DTS:DTSID="{796FE9FE-4EA3-4CB8-AE96-90A33A824230}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_ELEICAO"
+              DTS:DTSID="{8C0AAA28-D54C-4967-8A1C-290D4AFA8C55}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_ELEICAO"
+              DTS:DTSID="{20B0D050-63D4-47EC-AE2A-3A9A7A9A98EA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_ELEICAO"
+              DTS:DTSID="{06C0DBB9-6DF0-4873-86BC-97C68DFF351C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_POSSE"
+              DTS:DTSID="{30F2A9AB-1E53-40E3-AFC9-C3BB2DBEC6B3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UF"
+              DTS:DTSID="{9DD5384E-98F2-49AF-B6C9-3D69B44FB933}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UE"
+              DTS:DTSID="{7FDC8C13-AB8B-4C35-A070-F104D8EAACA8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_UE"
+              DTS:DTSID="{63A24608-ED4E-4457-9DBE-8B28DD0F4748}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_CARGO"
+              DTS:DTSID="{7D11D4E8-35EB-4209-97E5-3F9C7549D880}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_CARGO"
+              DTS:DTSID="{0321B94D-C8A8-4E52-90D0-763FC7518CD4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QT_VAGAS"
+              DTS:DTSID="{9F9F1447-19B9-4443-973D-2475EC6CC592}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FFS_ArquivoVagas 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{101E74F9-5C4B-49AA-8852-AE769441EAE0}"
+      DTS:ObjectName="FFS_ArquivoVagas 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\gabriel.quintella\Downloads\consulta_vagas_2020_AC.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_GERACAO"
+              DTS:DTSID="{CE06B156-870C-46A8-A79A-E48357ECA3F6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HH_GERACAO"
+              DTS:DTSID="{E5C4CB2D-116F-431F-8056-6DB9C8F395B4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ANO_ELEICAO"
+              DTS:DTSID="{98E130E3-DECE-403E-81B6-312B1C2EB70A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_TIPO_ELEICAO"
+              DTS:DTSID="{AADCBC53-42D4-4F1F-B277-FE4460DE24EB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_TIPO_ELEICAO"
+              DTS:DTSID="{9D76A50C-888B-4352-A563-EFC1176C1D97}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_ELEICAO"
+              DTS:DTSID="{A0C16B32-EAEE-471D-A9FF-58337ADC1859}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_ELEICAO"
+              DTS:DTSID="{C9F46EE5-70BA-4BA4-B3A3-CBDF524CDAD1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_ELEICAO"
+              DTS:DTSID="{4D5BF0E9-2FFB-4E67-8E52-DB481F88E6A8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_POSSE"
+              DTS:DTSID="{E191282D-39F1-4D89-832C-6E616CFDF9C8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UF"
+              DTS:DTSID="{EBD63872-B48D-46DD-B3A5-1676FB641A13}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UE"
+              DTS:DTSID="{EAD3D6D5-4016-4E11-897F-14ACEA4EA115}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_UE"
+              DTS:DTSID="{9B7E5522-91E3-42D7-8A04-81B2B317517D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_CARGO"
+              DTS:DTSID="{CD315397-E5FE-4E49-AD1A-83125177C576}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_CARGO"
+              DTS:DTSID="{18ED9E94-7728-4087-9055-52CC6EF7B4CB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QT_VAGAS"
+              DTS:DTSID="{1DDA700F-AA19-475F-AEFB-5B38BE0FD9A4}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Carga_Dados_Eleitoral"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{260A5542-681B-4F30-B8C3-CB3D02C2445B}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Carga_Dados_Eleitoral"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS"
+              componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1046"
+              name="ARQVAGAS"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FFS_ArquivoVagas 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[FFS_ArquivoVagas 1]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DT_GERACAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[HH_GERACAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[ANO_ELEICAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[CD_ELEICAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DS_ELEICAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DT_ELEICAO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DT_POSSE]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_POSSE]"
+                      name="DT_POSSE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[SG_UF]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[SG_UF]"
+                      name="SG_UF"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[SG_UE]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[SG_UE]"
+                      name="SG_UE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[NM_UE]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_UE]"
+                      name="NM_UE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[CD_CARGO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_CARGO]"
+                      name="CD_CARGO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DS_CARGO]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_CARGO]"
+                      name="DS_CARGO"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[QT_VAGAS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[QT_VAGAS]"
+                      length="50"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DT_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="HH_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ANO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CD_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NM_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CD_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DS_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DT_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DT_POSSE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SG_UF" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SG_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NM_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DS_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].ExternalColumns[QT_VAGAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="QT_VAGAS" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carrega Cargos"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[consulta_vagas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CD_CARGO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[DS_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DS_CARGO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_CARGO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[DT_GERACAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DT_GERACAO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_GERACAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[HH_GERACAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="HH_GERACAO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[HH_GERACAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[ANO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ANO_ELEICAO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[CD_TIPO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CD_TIPO_ELEICAO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[CD_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CD_ELEICAO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[DT_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DT_ELEICAO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[DT_POSSE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DT_POSSE"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DT_POSSE]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[SG_UF]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SG_UF"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[SG_UF]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[SG_UE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SG_UE"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[SG_UE]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[NM_UE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NM_UE"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_UE]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[QT_VAGAS_t]"
+                      cachedDataType="i4"
+                      cachedName="QT_VAGAS_t"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[QT_VAGAS_t]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[NM_TIPO_ELEICAO_t]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="NM_TIPO_ELEICAO_t"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[NM_TIPO_ELEICAO_t]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].Columns[DS_ELEICAO_t]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_ELEICAO_t"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[DS_ELEICAO_t]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="HH_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="ANO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_POSSE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UF" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                      dataType="i4"
+                      name="QT_VAGAS" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Tratamento de Colunas"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input].Columns[QT_VAGAS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="QT_VAGAS"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[QT_VAGAS]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input].Columns[CD_TIPO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CD_TIPO_ELEICAO"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input].Columns[NM_TIPO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NM_TIPO_ELEICAO"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input].Columns[DS_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DS_ELEICAO"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_ELEICAO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[QT_VAGAS_t]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[QT_VAGAS_t]"
+                      name="QT_VAGAS_t"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)#{Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[QT_VAGAS]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)QT_VAGAS</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[DS_ELEICAO_t]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[DS_ELEICAO_t]"
+                      name="DS_ELEICAO_t"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,200,1252)([REPLACE](#{Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[DS_ELEICAO]},"Eleições Municipais 2020","Eleições Municipais"))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,200,1252)(REPLACE(DS_ELEICAO,"Eleições Municipais 2020","Eleições Municipais"))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[NM_TIPO_ELEICAO_t]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output].Columns[NM_TIPO_ELEICAO_t]"
+                      name="NM_TIPO_ELEICAO_t"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,200,1252)(#{Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]} + " - " + #{Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,200,1252)(CD_TIPO_ELEICAO + " - " + NM_TIPO_ELEICAO)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Carga_Dados_Eleitoral.Paths[Derived Column Output]"
+              endId="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF_Carga_Dados_Eleitoral.Paths[Flat File Source Output]"
+              endId="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQLTask - Limpa Tabela"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{97C60607-2EF7-4A88-A31A-BB5A0222AB79}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQLTask - Limpa Tabela"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{0B9AF96D-B141-4A79-93FB-37153181EC71}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[consulta_vagas]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6E514C3E-97F9-4AD2-A8DC-A38B40C7F63F}"
+      DTS:From="Package\SQLTask - Limpa Tabela"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Carga_Dados_Eleitoral" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\DF_Carga_Dados_Eleitoral"
+          TopLeft="221,189" />
+        <NodeLayout
+          Size="162.666666666667,42"
+          Id="Package\SQLTask - Limpa Tabela"
+          TopLeft="241,104" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="322.75,146">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Carga_Dados_Eleitoral">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="188.666666666667,42"
+          Id="Package\DF_Carga_Dados_Eleitoral\Tratamento de Colunas"
+          TopLeft="293.595233802285,139.690475614866" />
+        <NodeLayout
+          Size="131.333333333334,42"
+          Id="Package\DF_Carga_Dados_Eleitoral\ARQVAGAS"
+          TopLeft="321.928567135618,37.6904756148656" />
+        <NodeLayout
+          Size="151.333333333334,42"
+          Id="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos"
+          TopLeft="312.261900468951,241.690475614866" />
+        <EdgeLayout
+          Id="Package\DF_Carga_Dados_Eleitoral.Paths[Flat File Source Output]"
+          TopLeft="387.761900468951,79.6904756148656">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Carga_Dados_Eleitoral.Paths[Derived Column Output]"
+          TopLeft="387.928567135618,181.690475614866">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Carga_Dados_Eleitoral\Carrega Cargos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
