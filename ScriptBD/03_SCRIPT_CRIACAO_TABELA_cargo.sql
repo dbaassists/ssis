@@ -1,0 +1,16 @@
+USE [DBDBAASSISTS]
+GO
+
+-- VERIFICA SE A TABELA EXISTE ANTES DA SUA CRIAÇÃO
+-- CASO EXISTA, ELA É EXCLUÍDA
+IF EXISTS (SELECT 1 FROM SYS.tables T , SYS.SCHEMAS S WHERE T.schema_id = S.schema_id AND T.NAME =  'cargo')
+DROP TABLE [dbo].[cargo]
+GO
+
+-- CRIAÇÃO DA TABELA 
+CREATE TABLE [dbo].[cargo](
+	[CD_CARGO] [varchar](200) NULL,
+	[DS_CARGO] [varchar](200) NULL
+) ON [PRIMARY]
+
+GO
