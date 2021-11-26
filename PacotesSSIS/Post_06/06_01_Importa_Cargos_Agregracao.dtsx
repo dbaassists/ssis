@@ -1,0 +1,1090 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/14/2021 5:09:06 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BRALMS01ETL"
+  DTS:CreatorName="BRDTCSHVGAS\gabriel.quintella"
+  DTS:DTSID="{E90BE090-904E-45E8-A146-C305DC061FC2}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7507.2"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="06_01_Importa_Cargos_Agregracao"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{AE71B312-C099-4A41-B7C5-E40B1FB54CAF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6B1FB26D-85C2-4729-9612-EA7487F55C6D}"
+      DTS:ObjectName="DS_SQLServer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;User ID=usrdbaassists;Initial Catalog=DBDBAASSISTS;Provider=SQLNCLI11.1;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKrb6N5nKskWvdfZriaIAjQAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAABelAxu872xc4/Wqf3ZtqwRAAAAAASAAACgAAAAEAAAAEyup0UPVDRmpfmAU6GScjAgAAAAjlNBLfcj5F3cX1xjPZ2r98aCxIsyJ9qwJtBCoPXxkfYUAAAA0jnQf4dnh4Q/hvJ3+nSTjcDuLXI</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FFS_ArquivoVagas]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8B55151F-F587-4258-9974-C2F86A033A56}"
+      DTS:ObjectName="FFS_ArquivoVagas">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\gabriel.quintella\Downloads\consulta_vagas_2020_AC.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_GERACAO"
+              DTS:DTSID="{0FA09608-1886-4D8B-B14A-84977984243D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HH_GERACAO"
+              DTS:DTSID="{E7932B66-1C50-4BAE-94DE-D58330720D5C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ANO_ELEICAO"
+              DTS:DTSID="{5FA0CEBC-A690-4379-ACC1-FA6A702B2E08}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_TIPO_ELEICAO"
+              DTS:DTSID="{4C14542E-D9DB-4E9E-898D-CABDE598A4ED}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_TIPO_ELEICAO"
+              DTS:DTSID="{2FBD8995-D85A-4A3E-89DD-7037F20DF40D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_ELEICAO"
+              DTS:DTSID="{FD0016D5-E4A0-4E7D-B279-80E7B7BB1859}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_ELEICAO"
+              DTS:DTSID="{FE1F8CBE-319B-4F68-AFC0-EDF42DF0FDC2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_ELEICAO"
+              DTS:DTSID="{AA2B6F64-27F8-4307-8834-568673D178A5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_POSSE"
+              DTS:DTSID="{BED2434F-FB0A-47F3-AC1C-F8257897AA1C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UF"
+              DTS:DTSID="{E1993225-D125-45F1-B96E-F19A54716B4E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UE"
+              DTS:DTSID="{4D7A02D5-CC08-4DDF-9EBE-EC0E8A905BA6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_UE"
+              DTS:DTSID="{EB9971C4-21EC-4262-BAC2-C8264FE64B31}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_CARGO"
+              DTS:DTSID="{FED225EA-FD5F-4077-9356-6BDCF906550F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_CARGO"
+              DTS:DTSID="{9CBFA89E-B286-45A6-96F9-DCB121A4A514}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QT_VAGAS"
+              DTS:DTSID="{C2875AFD-4736-4E48-BAFB-0F00035F9C61}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Carga_Dados_Eleitoral"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{87631ECD-D432-437D-83D8-21F895DB531F}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Carga_Dados_Eleitoral"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos"
+              componentClassID="{5B201335-B360-485C-BB93-75C34E09B3D3}"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Agregacao Cargos"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Inputs[Aggregate Input 1].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Inputs[Aggregate Input 1].Columns[DS_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_CARGO"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DS_CARGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1].Columns[CD_CARGO]"
+                      name="CD_CARGO">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_CARGO]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1].Columns[DS_CARGO]"
+                      name="DS_CARGO">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DS_CARGO]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="CarregaArquivoVagasMunicipio"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[cargo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input].Columns[DS_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_CARGO"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1].Columns[DS_CARGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_CARGO" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Orgem Dados Votacao"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[consulta_vagas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DT_GERACAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[HH_GERACAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[ANO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[CD_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DS_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DT_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DT_POSSE]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DT_POSSE]"
+                      name="DT_POSSE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[SG_UF]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[SG_UF]"
+                      name="SG_UF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[SG_UE]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[SG_UE]"
+                      name="SG_UE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[NM_UE]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[NM_UE]"
+                      name="NM_UE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[CD_CARGO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[CD_CARGO]"
+                      name="CD_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DS_CARGO]"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[DS_CARGO]"
+                      name="DS_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[QT_VAGAS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[QT_VAGAS]"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="HH_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="ANO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_POSSE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UF" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output].ExternalColumns[QT_VAGAS]"
+                      dataType="i4"
+                      name="QT_VAGAS" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DT_POSSE]"
+                      name="DT_POSSE" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[SG_UF]"
+                      name="SG_UF" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[SG_UE]"
+                      name="SG_UE" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[NM_UE]"
+                      name="NM_UE" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[CD_CARGO]"
+                      name="CD_CARGO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[DS_CARGO]"
+                      name="DS_CARGO" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[QT_VAGAS]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Carga_Dados_Eleitoral.Paths[Aggregate Output 1]"
+              endId="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\DF_Carga_Dados_Eleitoral.Paths[OLE DB Source Output]"
+              endId="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos.Inputs[Aggregate Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQLTask - Limpa Tabela"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{30036880-B04C-4CA9-842B-0EECF95401DA}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQLTask - Limpa Tabela"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{6B1FB26D-85C2-4729-9612-EA7487F55C6D}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.consulta_vagas" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F1626B2E-A00A-45E8-B3E5-D39187D1793E}"
+      DTS:From="Package\SQLTask - Limpa Tabela"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Carga_Dados_Eleitoral" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="204,42"
+          Id="Package\DF_Carga_Dados_Eleitoral"
+          TopLeft="218.083333376795,125.733334464629" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\SQLTask - Limpa Tabela"
+          TopLeft="238.083333376795,40.7333344646295" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="319.833333376795,82.7333344646295">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Carga_Dados_Eleitoral">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223.333333333334,42"
+          Id="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio"
+          TopLeft="375.142851634749,243.5476184388" />
+        <NodeLayout
+          Size="164.666666666667,42"
+          Id="Package\DF_Carga_Dados_Eleitoral\Agregacao Cargos"
+          TopLeft="404.476184968083,141.5476184388" />
+        <NodeLayout
+          Size="184.666666666667,42"
+          Id="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao"
+          TopLeft="394.476184968083,39.5476184388002" />
+        <EdgeLayout
+          Id="Package\DF_Carga_Dados_Eleitoral.Paths[OLE DB Source Output]"
+          TopLeft="486.809518301416,81.5476184388002">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Carga_Dados_Eleitoral.Paths[Aggregate Output 1]"
+          TopLeft="486.809518301416,183.5476184388">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Carga_Dados_Eleitoral\CarregaArquivoVagasMunicipio">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Carga_Dados_Eleitoral\Orgem Dados Votacao">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
