@@ -1,0 +1,1031 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/14/2021 5:09:06 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BRALMS01ETL"
+  DTS:CreatorName="BRDTCSHVGAS\gabriel.quintella"
+  DTS:DTSID="{E73CB761-B4C4-4459-83A4-E31643A2D7D8}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7507.2"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="11_Importa_Cargos_Pivot"
+  DTS:PackageType="5"
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{B1DF4F99-A95B-4B00-93C1-F9016EEF1190}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{89904FF3-4DD0-49D0-9CFB-9F76A2145B9A}"
+      DTS:ObjectName="DS_SQLServer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;Initial Catalog=DBDBAASSISTS;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DA6295D6-AE02-4BFA-A843-FE33AB2E0711}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Destino dos Dados"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino dos Dados"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[VENDAS_MES]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Destino dos Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[NOME_LOJA]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOME_LOJA"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NOME_LOJA]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[NOME_LOJA]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_janeiro_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_janeiro_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[JANEIRO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_janeiro_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_fevereiro_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_fevereiro_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[FEVEREIRO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_fevereiro_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_março_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_março_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[MARCO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_março_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_abril_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_abril_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[ABRIL]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_abril_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_maio_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_maio_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[MAIO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_maio_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_junho_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_junho_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[JUNHO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_junho_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_julho_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_julho_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[JULHO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_julho_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_agosto_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_agosto_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[AGOSTO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_agosto_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_setembro_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_setembro_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[SETEMBRO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_setembro_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_outubro_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_outubro_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[OUTUBRO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_outubro_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_novembro_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_novembro_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NOVEMBRO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_novembro_VALOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[C_dezembro_VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="C_dezembro_VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DEZEMBRO]"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_dezembro_VALOR]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NOME_LOJA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOME_LOJA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[JANEIRO]"
+                      dataType="numeric"
+                      name="JANEIRO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[FEVEREIRO]"
+                      dataType="numeric"
+                      name="FEVEREIRO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[MARCO]"
+                      dataType="numeric"
+                      name="MARCO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[ABRIL]"
+                      dataType="numeric"
+                      name="ABRIL"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[MAIO]"
+                      dataType="numeric"
+                      name="MAIO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[JUNHO]"
+                      dataType="numeric"
+                      name="JUNHO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[JULHO]"
+                      dataType="numeric"
+                      name="JULHO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[AGOSTO]"
+                      dataType="numeric"
+                      name="AGOSTO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[SETEMBRO]"
+                      dataType="numeric"
+                      name="SETEMBRO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[OUTUBRO]"
+                      dataType="numeric"
+                      name="OUTUBRO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NOVEMBRO]"
+                      dataType="numeric"
+                      name="NOVEMBRO"
+                      precision="23"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DEZEMBRO]"
+                      dataType="numeric"
+                      name="DEZEMBRO"
+                      precision="23"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Destino dos Dados.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Origem dos Dados"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origem dos Dados"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[VENDAS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Origem dos Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NOME_LOJA]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NOME_LOJA]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NOME_LOJA]"
+                      name="NOME_LOJA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[MES]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[MES]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[MES]"
+                      name="MES"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[VALOR]"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]"
+                      name="VALOR"
+                      precision="23"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NOME_LOJA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="NOME_LOJA" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[MES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="MES" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[VALOR]"
+                      dataType="numeric"
+                      name="VALOR"
+                      precision="23"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NOME_LOJA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NOME_LOJA]"
+                      name="NOME_LOJA" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[MES]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[MES]"
+                      name="MES" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[VALOR]"
+                      name="VALOR"
+                      precision="23"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Pivot da Tabela"
+              componentClassID="{AEB2AFAE-2201-48B1-B290-42BB8C9149DD}"
+              contactInfo="Pivot;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Compacts an input data flow by pivoting it on a column value, making it less normalized. The input data should be sorted by the pivot column because a pivot happens each time data in the pivot column changes. Note: duplicate rows will cause this transformation to fail."
+              name="Pivot da Tabela"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Causes the Pivot Transform to ignore rows containing unrecognized values in the Pivot Key column and to report the complete list of unmatched values at the end of DataFlow execution. Useful for collecting a list of values from input rows that can be used to automatically generate output columns."
+                  name="PassThroughUnmatchedPivotKeys">false</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Pivot da Tabela.Inputs[Pivot Default Input]"
+                  hasSideEffects="true"
+                  name="Pivot Default Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Inputs[Pivot Default Input].Columns[MES]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="MES"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[MES]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Describes how the input column participates in the pivot operation. It can help define a set of related records, it can hold the key that uniquely identifies a row within the related set and upon which the values are pivoted, it can hold a value that gets transferred into a pivoted column or it can contain a value that simply passes straight though the pivot unchanged."
+                          name="PivotUsage">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Inputs[Pivot Default Input].Columns[NOME_LOJA]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="NOME_LOJA"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NOME_LOJA]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Describes how the input column participates in the pivot operation. It can help define a set of related records, it can hold the key that uniquely identifies a row within the related set and upon which the values are pivoted, it can hold a value that gets transferred into a pivoted column or it can contain a value that simply passes straight though the pivot unchanged."
+                          name="PivotUsage">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Inputs[Pivot Default Input].Columns[VALOR]"
+                      cachedDataType="numeric"
+                      cachedName="VALOR"
+                      cachedPrecision="23"
+                      cachedScale="3"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Describes how the input column participates in the pivot operation. It can help define a set of related records, it can hold the key that uniquely identifies a row within the related set and upon which the values are pivoted, it can hold a value that gets transferred into a pivoted column or it can contain a value that simply passes straight though the pivot unchanged."
+                          name="PivotUsage">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output]"
+                  name="Pivot Default Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[NOME_LOJA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[NOME_LOJA]"
+                      name="NOME_LOJA">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NOME_LOJA]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_abril_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_abril_VALOR]"
+                      name="C_abril_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">abril</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_agosto_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_agosto_VALOR]"
+                      name="C_agosto_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">agosto</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_dezembro_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_dezembro_VALOR]"
+                      name="C_dezembro_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">dezembro</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_fevereiro_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_fevereiro_VALOR]"
+                      name="C_fevereiro_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">fevereiro</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_janeiro_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_janeiro_VALOR]"
+                      name="C_janeiro_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">janeiro</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_julho_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_julho_VALOR]"
+                      name="C_julho_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">julho</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_junho_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_junho_VALOR]"
+                      name="C_junho_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">junho</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_maio_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_maio_VALOR]"
+                      name="C_maio_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">maio</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_março_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_março_VALOR]"
+                      name="C_março_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">março</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_novembro_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_novembro_VALOR]"
+                      name="C_novembro_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">novembro</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_outubro_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_outubro_VALOR]"
+                      name="C_outubro_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">outubro</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_setembro_VALOR]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output].Columns[C_setembro_VALOR]"
+                      name="C_setembro_VALOR"
+                      precision="23"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage identifier of an input column that contains a PivotedValue or the value -1. The value -1 indicates the column is not used in a pivot operation"
+                          name="SourceColumn">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[VALOR]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies a value that matches one of the possible values from the input column that is marked as the pivot key by the PivotUsage property."
+                          expressionType="Notify"
+                          name="PivotKeyValue">setembro</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Pivot Error Output"
+                  synchronousInputId="Package\Data Flow Task\Pivot da Tabela.Inputs[Pivot Default Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Pivot da Tabela.Inputs[Pivot Default Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Pivot Default Output]"
+              endId="Package\Data Flow Task\Destino dos Dados.Inputs[OLE DB Destination Input]"
+              name="Pivot Default Output"
+              startId="Package\Data Flow Task\Pivot da Tabela.Outputs[Pivot Default Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpa Tabela VENDAS_MES"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{152B2B96-84D3-4218-B051-E43B85361EF4}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpa Tabela VENDAS_MES"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{89904FF3-4DD0-49D0-9CFB-9F76A2145B9A}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [dbo].[VENDAS_MES]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F0B7535E-17BF-49D2-8113-176C23BD248E}"
+      DTS:From="Package\Limpa Tabela VENDAS_MES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="54,209" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Limpa Tabela VENDAS_MES"
+          TopLeft="44,106" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="127.5,148">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task\Origem dos Dados"
+          TopLeft="38.2222222222222,33.8888888888889" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\Data Flow Task\Pivot da Tabela"
+          TopLeft="38.8888888888889,151.111111111111" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="118.055555555556,75.8888888888889">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,75.2222222222222"
+              Start="0,0"
+              End="0,67.7222222222222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.7222222222222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\Data Flow Task\Destino dos Dados"
+          TopLeft="33.3333333333333,282.222222222222" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Pivot Default Output]"
+          TopLeft="115.861111111111,193.111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89.1111111111111"
+              Start="0,0"
+              End="0,81.6111111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.6111111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,32.8055555555556,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Origem dos Dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Destino dos Dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
