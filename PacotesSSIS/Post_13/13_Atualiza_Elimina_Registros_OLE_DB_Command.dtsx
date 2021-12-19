@@ -1,0 +1,1712 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/12/2021 8:04:37 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BRALMS01ETL"
+  DTS:CreatorName="BRDTCSHVGAS\gabriel.quintella"
+  DTS:DTSID="{169C97AB-06EC-4542-8FAC-B62ACCAF3BE7}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7507.2"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="13_Atualiza_Elimina_Registros_OLE_DB_Command"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{0D7F6D0B-3B15-4E0E-A6FC-18313B60EDF1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{037CC30B-F793-45F4-A309-66CD090A589C}"
+      DTS:ObjectName="DS_SQLServer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;Initial Catalog=DBDBAASSISTS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer_Log]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0D3678D8-7D6D-417E-A91B-F53576B33F3F}"
+      DTS:ObjectName="DS_SQLServer_Log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;Initial Catalog=LOG_SSIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E5C415DB-FEE4-4D82-985E-6C1DF71E56D4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Grupo">
+      <DTS:VariableValue
+        DTS:DataType="8">T_SSIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CCBC0EF0-DF84-4DF9-AC7F-838A4AF89593}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="QtdLinhasAtualizadas">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{863201B8-D26C-42BE-81B8-82371355365B}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="QtdLinhasInseridas">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7C636E28-01DE-41C7-8B5E-4987202C0CA7}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Data Flow Task.EventHandlers[OnPostExecute]"
+          DTS:CreationName="OnPostExecute"
+          DTS:DTSID="{F32031E1-CB84-4750-A6D5-F04E0C855338}"
+          DTS:EventID="6684704"
+          DTS:EventName="OnPostExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{44179C17-8FAC-4E4D-BCFD-D4B617E2A07B}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Data Flow Task.EventHandlers[OnPostExecute]\SQLT- Registra Log"
+              DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:DelayValidation="True"
+              DTS:Description="Execute SQL Task"
+              DTS:DisableEventHandlers="True"
+              DTS:DTSID="{88d5895a-8e58-4d4e-8542-d76e615f1699}"
+              DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="SQLT- Registra Log"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{0D3678D8-7D6D-417E-A91B-F53576B33F3F}"
+                  SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLog] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,'F'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="0"
+                    SQLTask:DtsVariableName="User::Grupo"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="1"
+                    SQLTask:DtsVariableName="System::PackageID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="2"
+                    SQLTask:DtsVariableName="System::PackageName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="3"
+                    SQLTask:DtsVariableName="System::SourceID"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="4"
+                    SQLTask:DtsVariableName="System::SourceName"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="5"
+                    SQLTask:DtsVariableName="System::SourceDescription"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="129"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="6"
+                    SQLTask:DtsVariableName="User::QtdLinhasInseridas"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="3"
+                    SQLTask:ParameterSize="-1" />
+                  <SQLTask:ParameterBinding
+                    SQLTask:ParameterName="7"
+                    SQLTask:DtsVariableName="User::QtdLinhasAtualizadas"
+                    SQLTask:ParameterDirection="Input"
+                    SQLTask:DataType="3"
+                    SQLTask:ParameterSize="-1" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Agrupa Cargo"
+              componentClassID="{5B201335-B360-485C-BB93-75C34E09B3D3}"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Agrupa Cargo"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Agrupa Cargo.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Agrupa Cargo.Inputs[Aggregate Input 1].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Agrupa Cargo.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Agrupa Cargo.Outputs[Aggregate Output 1].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Agrupa Cargo.Outputs[Aggregate Output 1].Columns[CD_CARGO]"
+                      name="CD_CARGO">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao"
+              componentClassID="{5B201335-B360-485C-BB93-75C34E09B3D3}"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Agrupa Valores Cargo e Descricao"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Inputs[Aggregate Input 1].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Inputs[Aggregate Input 1].Columns[DS_CARGO_t]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_CARGO_t"
+                      lineageId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Output].Columns[DS_CARGO_t]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1].Columns[CD_CARGO]"
+                      name="CD_CARGO">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1].Columns[DS_CARGO_t]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1].Columns[DS_CARGO_t]"
+                      name="DS_CARGO_t">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Output].Columns[DS_CARGO_t]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\CS - Define Fluxo"
+              componentClassID="{7F88F654-4E20-4D14-84F4-AF9C925D3087}"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CS - Define Fluxo"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Atualiza CD_CARGO IGUAL 11]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Atualiza CD_CARGO IGUAL 11"
+                  synchronousInputId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]} == "11"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">CD_CARGO == "11"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Elimina CD_CARGO IGUAL 12]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Elimina CD_CARGO IGUAL 12"
+                  synchronousInputId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]} == "12"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">CD_CARGO == "12"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\DC - Cria Coluna"
+              componentClassID="{49928E82-9C4E-49F0-AABE-3812B82707EC}"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DC - Cria Coluna"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\DC - Cria Coluna.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\DC - Cria Coluna.Inputs[Derived Column Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\DC - Cria Coluna.Inputs[Derived Column Input].Columns[DS_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_CARGO"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\DC - Cria Coluna.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Output].Columns[DS_CARGO_t]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Output].Columns[DS_CARGO_t]"
+                      name="DS_CARGO_t"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,200,1252)(#{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]} + "_" + #{Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,200,1252)(CD_CARGO + "_" + DS_CARGO)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\DC - Cria Coluna.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OD - Atualiza Dados"
+              componentClassID="{93FFEC66-CBC8-4C7F-9C6A-CB1C17A7567D}"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OD - Atualiza Dados"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE A
+SET DS_CARGO = ?
+FROM [dbo].[consulta_vagas] A
+WHERE CD_CARGO = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OD - Atualiza Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      externalMetadataColumnId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input].Columns[DS_CARGO_t]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_CARGO_t"
+                      externalMetadataColumnId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1].Columns[DS_CARGO_t]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OD - Atualiza Dados.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OD - Atualiza Dados.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OD - Atualiza Dados.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OD - Atualiza Dados.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OD - Atualiza Dados.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OD - Atualiza Dados.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OD - Delete Dados"
+              componentClassID="{93FFEC66-CBC8-4C7F-9C6A-CB1C17A7567D}"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OD - Delete Dados"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">DELETE
+FROM [dbo].[consulta_vagas]
+WHERE CD_CARGO = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OD - Delete Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      externalMetadataColumnId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Data Flow Task\Agrupa Cargo.Outputs[Aggregate Output 1].Columns[CD_CARGO]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OD - Delete Dados.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OD - Delete Dados.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OD - Delete Dados.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OD - Delete Dados.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OD - Delete Dados.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OD - Delete Dados.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Origem dos Dados"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origem dos Dados"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[consulta_vagas]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Origem dos Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_GERACAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[HH_GERACAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[ANO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_ELEICAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_ELEICAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_ELEICAO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_POSSE]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_POSSE]"
+                      name="DT_POSSE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UF]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UF]"
+                      name="SG_UF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UE]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UE]"
+                      name="SG_UE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_UE]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_UE]"
+                      name="NM_UE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_CARGO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]"
+                      name="CD_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_CARGO]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]"
+                      name="DS_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[QT_VAGAS]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[QT_VAGAS]"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="HH_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="ANO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_POSSE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UF" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_UE" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[QT_VAGAS]"
+                      dataType="i4"
+                      name="QT_VAGAS" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_POSSE]"
+                      name="DT_POSSE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UF]"
+                      name="SG_UF" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UE]"
+                      name="SG_UE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_UE]"
+                      name="NM_UE" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_CARGO]"
+                      name="CD_CARGO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_CARGO]"
+                      name="DS_CARGO" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[QT_VAGAS]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Aggregate Output 11]"
+              endId="Package\Data Flow Task\OD - Atualiza Dados.Inputs[OLE DB Command Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Aggregate Output 1]"
+              endId="Package\Data Flow Task\OD - Delete Dados.Inputs[OLE DB Command Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task\Agrupa Cargo.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Atualiza]"
+              endId="Package\Data Flow Task\DC - Cria Coluna.Inputs[Derived Column Input]"
+              name="Atualiza"
+              startId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Atualiza CD_CARGO IGUAL 11]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\Agrupa Valores Cargo e Descricao.Inputs[Aggregate Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\DC - Cria Coluna.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Elimina]"
+              endId="Package\Data Flow Task\Agrupa Cargo.Inputs[Aggregate Input 1]"
+              name="Elimina"
+              startId="Package\Data Flow Task\CS - Define Fluxo.Outputs[Elimina CD_CARGO IGUAL 12]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\CS - Define Fluxo.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Origem dos Dados.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPostExecute]"
+      DTS:CreationName="OnPostExecute"
+      DTS:DTSID="{DBAEF193-561D-47C3-883C-AD21871101B4}"
+      DTS:EventID="510309932"
+      DTS:EventName="OnPostExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{41B422B5-40FC-4233-A4C8-BF069C741A69}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\SQLT- Registra Log"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DisableEventHandlers="True"
+          DTS:DTSID="{8b36b54a-7597-4b39-9408-b583343500f5}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQLT- Registra Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0D3678D8-7D6D-417E-A91B-F53576B33F3F}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLog] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,0&#xA;  ,0&#xA;  ,'F'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Grupo"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPreExecute]"
+      DTS:CreationName="OnPreExecute"
+      DTS:DTSID="{9249E0D7-87D6-48E3-A4D4-6015AD685509}"
+      DTS:EventID="43820932"
+      DTS:EventName="OnPreExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{6FCF4470-EBD8-468E-BA25-4FD5402397E4}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPreExecute]\SQLT- Registra Log"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
+          DTS:Description="Execute SQL Task"
+          DTS:DisableEventHandlers="True"
+          DTS:DTSID="{1b1a2f84-806a-4e6f-b5ac-49532d301366}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQLT- Registra Log"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{0D3678D8-7D6D-417E-A91B-F53576B33F3F}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLog] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,0&#xA;  ,0&#xA;  ,'I'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Grupo"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.666666666667,42"
+          Id="Package\Data Flow Task"
+          TopLeft="441,129" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="136,44"
+          Id="Package.EventHandlers[OnPostExecute]\SQLT- Registra Log"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="136,44"
+          Id="Package.EventHandlers[OnPreExecute]\SQLT- Registra Log"
+          TopLeft="57,57" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="174,42"
+          Id="Package\Data Flow Task\OD - Atualiza Dados"
+          TopLeft="510.75,483.75" />
+        <NodeLayout
+          Size="166.666666666667,42"
+          Id="Package\Data Flow Task\OD - Delete Dados"
+          TopLeft="903,238" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task\Origem dos Dados"
+          TopLeft="499.5,40.75" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task\CS - Define Fluxo"
+          TopLeft="503.5,133.75" />
+        <NodeLayout
+          Size="157.333333333334,42"
+          Id="Package\Data Flow Task\DC - Cria Coluna"
+          TopLeft="505,248" />
+        <NodeLayout
+          Size="142.666666666667,42"
+          Id="Package\Data Flow Task\Agrupa Cargo"
+          TopLeft="918,141.5" />
+        <NodeLayout
+          Size="238.666666666667,42"
+          Id="Package\Data Flow Task\Agrupa Valores Cargo e Descricao"
+          TopLeft="471.5,382" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="583,82.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Elimina]"
+          TopLeft="663.5,158.625">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="254.5,0"
+              Start="0,0"
+              End="247,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="247,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="57.99888671875,5,131.0022265625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="587.25,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92"
+              Start="0,0"
+              End="0,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Atualiza]"
+          TopLeft="583.5,175.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72.25"
+              Start="0,0"
+              End="0,64.75">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.75" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-67.0736328125,26.84375,134.147265625,11.0625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Aggregate Output 11]"
+          TopLeft="594.375,424">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.75"
+              Start="0,0"
+              End="0,52.25">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.25" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Aggregate Output 1]"
+          TopLeft="988,183.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.5"
+              Start="0,0"
+              End="0,47">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Data Flow Task.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Data Flow Task.EventHandlers[OnPostExecute]\SQLT- Registra Log"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Origem dos Dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
