@@ -1,0 +1,963 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/21/2021 11:08:22 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BRALMS01ETL"
+  DTS:CreatorName="BRDTCSHVGAS\gabriel.quintella"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{E014260E-DAD2-4BA3-874F-29D35516559D}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7507.2"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="16_Parametrizando_Conexao"
+  DTS:PackageType="5"
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{AAF64E85-3309-4C7A-82B7-9A116AB7FEC5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{E420B0B4-B23C-4432-B8B1-61C7469115F0}"
+      DTS:ObjectName="DS_SQLServer">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[User::var_Banco]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[User::var_Senha]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[User::var_Servidor]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[User::var_Usuario]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;User ID=SSIS_usr;Initial Catalog=DBDBAASSISTS;Provider=SQLNCLI11.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgskSEcCHm0eOBHp87O/b2AAAAAAIAAAARABUAFMAAAADZgAAwAAAABAAAAAi7x4bqQO5fbWvo4bWS4mSAAAAAASAAACgAAAAEAAAADwcj/tStWqHlC3MsqfZmP0gAAAAVRODu5fX4pL4nhNmORufIrGD/pbzAUzUUTTfl06Uk3IUAAAA2E4530bB2mx8Frsafjw9BxH6Ops</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="C:\tmp\ParamConn\arq_ParamConn.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{E1BD8C2E-0C76-493B-ADC6-FA0A95F8201C}"
+      DTS:ObjectName="arq_ParamConn" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{46156B1E-7888-409A-88A8-1F922961F9B6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="var_Banco">
+      <DTS:VariableValue
+        DTS:DataType="8">DBDBAASSISTS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1AB4E1B8-9D5D-4677-A643-7A2FFF18ED28}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="var_Senha">
+      <DTS:VariableValue
+        DTS:DataType="8">S$I$_usr20@21!.</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0157B95D-2791-4069-8030-6D90C19D893D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="var_Servidor">
+      <DTS:VariableValue
+        DTS:DataType="8">LOCALHOST\HML2012</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D57B80A-1403-4BAB-A718-7FB2951DAF6F}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="var_Usuario">
+      <DTS:VariableValue
+        DTS:DataType="8">SSIS_usr</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - Carga Dados Eleitorais"
+      DTS:CreationName="SSIS.Pipeline.3"
+      DTS:DelayValidation="True"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{16E03A73-ED77-4C62-9F1E-C1778FEF207D}"
+      DTS:ExecutableType="SSIS.Pipeline.3"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Carga Dados Eleitorais"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados"
+              componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino dos Dados"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[consulta_vagas_amostra]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="IgnoreFailure"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[DT_GERACAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DT_GERACAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_GERACAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[HH_GERACAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="HH_GERACAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[HH_GERACAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[ANO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="ANO_ELEICAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[CD_TIPO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_TIPO_ELEICAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[NM_TIPO_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="NM_TIPO_ELEICAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[CD_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_ELEICAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[DS_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_ELEICAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[DT_ELEICAO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DT_ELEICAO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[DT_POSSE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DT_POSSE"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_POSSE]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[SG_UF]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="SG_UF"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UF]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[SG_UE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="SG_UE"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UE]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[NM_UE]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="NM_UE"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_UE]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[CD_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="CD_CARGO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[DS_CARGO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="DS_CARGO"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]" />
+                    <inputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].Columns[QT_VAGAS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="QT_VAGAS"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[QT_VAGAS]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="HH_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="ANO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_POSSE" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UF" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                      dataType="i4"
+                      name="QT_VAGAS" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados"
+              componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origem dos Dados"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[consulta_vagas2]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                  connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_GERACAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[HH_GERACAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[ANO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_ELEICAO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_POSSE]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DT_POSSE]"
+                      name="DT_POSSE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UF]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UF]"
+                      name="SG_UF"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UE]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[SG_UE]"
+                      name="SG_UE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_UE]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[NM_UE]"
+                      name="NM_UE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_CARGO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[CD_CARGO]"
+                      name="CD_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_CARGO]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[DS_CARGO]"
+                      name="DS_CARGO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[QT_VAGAS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[QT_VAGAS]"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="HH_GERACAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="ANO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_TIPO_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_ELEICAO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DT_POSSE" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UF" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="SG_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="NM_UE" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="CD_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="DS_CARGO" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output].ExternalColumns[QT_VAGAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="QT_VAGAS" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_GERACAO]"
+                      name="DT_GERACAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[HH_GERACAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[HH_GERACAO]"
+                      name="HH_GERACAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ANO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[ANO_ELEICAO]"
+                      name="ANO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_TIPO_ELEICAO]"
+                      name="CD_TIPO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_TIPO_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_TIPO_ELEICAO]"
+                      name="NM_TIPO_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_ELEICAO]"
+                      name="CD_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_ELEICAO]"
+                      name="DS_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_ELEICAO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_ELEICAO]"
+                      name="DT_ELEICAO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_POSSE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DT_POSSE]"
+                      name="DT_POSSE" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UF]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UF]"
+                      name="SG_UF" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[SG_UE]"
+                      name="SG_UE" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_UE]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[NM_UE]"
+                      name="NM_UE" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[CD_CARGO]"
+                      name="CD_CARGO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_CARGO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[DS_CARGO]"
+                      name="DS_CARGO" />
+                    <outputColumn
+                      refId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[QT_VAGAS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Error Output].Columns[QT_VAGAS]"
+                      name="QT_VAGAS" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Carga Dados Eleitorais.Paths[OLE DB Source Output]"
+              endId="Package\DF - Carga Dados Eleitorais\Destino dos Dados.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Carga Dados Eleitorais\Origem dos Dados.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="208.666666666667,42"
+          Id="Package\DF - Carga Dados Eleitorais"
+          TopLeft="218.666667833924,109.333334650596" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF - Carga Dados Eleitorais">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DF - Carga Dados Eleitorais\Origem dos Dados"
+          TopLeft="439.49999354283,79.7857129573822" />
+        <NodeLayout
+          Size="167.333333333334,42"
+          Id="Package\DF - Carga Dados Eleitorais\Destino dos Dados"
+          TopLeft="438.833326876164,181.785712957382" />
+        <EdgeLayout
+          Id="Package\DF - Carga Dados Eleitorais.Paths[OLE DB Source Output]"
+          TopLeft="522.49999354283,121.785712957382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Carga Dados Eleitorais\Destino dos Dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Carga Dados Eleitorais\Origem dos Dados">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

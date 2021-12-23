@@ -1,0 +1,14 @@
+<?xml version="1.0"?><DTSConfiguration><DTSConfigurationHeading><DTSConfigurationFileInfo GeneratedBy="dbaassists" GeneratedFromPackageName="Package5" GeneratedFromPackageID="{D7BA6E91-B891-4EA6-9762-74AD1BA51EAC}" GeneratedDate="21/11/2021 23:13:46"/></DTSConfigurationHeading>
+<Configuration ConfiguredType="Property" Path="\Package.Variables[User::var_Banco].Properties[Value]" ValueType="String">
+<ConfiguredValue></ConfiguredValue>
+</Configuration>
+<Configuration ConfiguredType="Property" Path="\Package.Variables[User::var_Senha].Properties[Value]" ValueType="String">
+<ConfiguredValue></ConfiguredValue>
+</Configuration>
+<Configuration ConfiguredType="Property" Path="\Package.Variables[User::var_Servidor].Properties[Value]" ValueType="String">
+<ConfiguredValue></ConfiguredValue>
+</Configuration>
+<Configuration ConfiguredType="Property" Path="\Package.Variables[User::var_Usuario].Properties[Value]" ValueType="String">
+<ConfiguredValue></ConfiguredValue>
+</Configuration>
+</DTSConfiguration>
