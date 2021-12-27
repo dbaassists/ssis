@@ -1,0 +1,2490 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2021 11:19:07 AM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="BRALMS01ETL"
+  DTS:CreatorName="BRDTCSHVGAS\gabriel.quintella"
+  DTS:DelayValidation="True"
+  DTS:DTSID="{8338EDB0-D15D-47C9-A768-A7D8C67BBE68}"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.7507.2"
+  DTS:LocaleID="1046"
+  DTS:ObjectName="17_Importa_Carga_Dados_Rotina_Log"
+  DTS:PackageType="5"
+  DTS:VersionBuild="134"
+  DTS:VersionGUID="{B426613E-0A7A-4D6F-829A-E52B02363B33}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{75AD998E-37DF-4296-A6F5-22804DC92E49}"
+      DTS:ObjectName="DS_SQLServer">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;Initial Catalog=DBDBAASSISTS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer_Log]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1ADC5071-4678-418F-AC92-4B5FBB924DF3}"
+      DTS:ObjectName="DS_SQLServer_Log">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;Initial Catalog=LOG_SSIS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DS_SQLServer_TempDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{5950C930-BEC7-48F7-9017-5D617EF43D11}"
+      DTS:ObjectName="DS_SQLServer_TempDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Retain="True"
+          DTS:ConnectionString="Data Source=LOCALHOST\HML2012;Initial Catalog=tempdb;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FS_ArquivoVagas]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{076D6684-6CEE-458E-B672-08AF48C8AD5F}"
+      DTS:ObjectName="FS_ArquivoVagas">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::arquivoCompleto]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1046"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_GERACAO"
+              DTS:DTSID="{4BFF7D16-30EF-4735-9848-23D812416CFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="HH_GERACAO"
+              DTS:DTSID="{50B60964-FDD8-4475-947C-FF6C70C224EF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ANO_ELEICAO"
+              DTS:DTSID="{306FAD83-20B5-4A09-975F-36C851B25EB9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_TIPO_ELEICAO"
+              DTS:DTSID="{245D6363-1249-464F-9B74-58A6FE81C84E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_TIPO_ELEICAO"
+              DTS:DTSID="{DC6F9ED3-8099-4A82-87AC-319B432790F0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_ELEICAO"
+              DTS:DTSID="{3A5662AE-9104-47A9-9DCC-2A97622F84B1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_ELEICAO"
+              DTS:DTSID="{34F410D1-373F-4CDF-8281-7626D85EBDBD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_ELEICAO"
+              DTS:DTSID="{691B4E88-32AE-43FC-BE45-54233AFCAF72}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DT_POSSE"
+              DTS:DTSID="{337D1359-74D9-4C45-B039-652114F6E385}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UF"
+              DTS:DTSID="{CFB1BC7C-55EA-446D-8EF4-DFE30F9148A3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SG_UE"
+              DTS:DTSID="{D5C2691C-53AE-4DA3-9713-171958DAF3E8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NM_UE"
+              DTS:DTSID="{BE2FC893-C6C7-4B17-87D5-D2A1C8106DB8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CD_CARGO"
+              DTS:DTSID="{CB3B0459-44BC-465B-9B01-F383BFA3C0BD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DS_CARGO"
+              DTS:DTSID="{62A6622E-6E6A-4053-A2E4-6484E692B016}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QT_VAGAS"
+              DTS:DTSID="{7CE0DB4C-6885-4369-9D04-EE6B0CC5F2D8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E6C578BD-5937-4A89-BE69-91841A19B0DD}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="arquivo">
+      <DTS:VariableValue
+        DTS:DataType="8">consulta_vagas_2020</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4FBA0728-2B78-48C9-A06E-4F637F8932D4}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="arquivoCompleto">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7223456B-254C-4BA6-9AF3-F08D68211480}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="diretorioImportado">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\tmp\Importado</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{69BBA68F-26F9-4235-8E5B-2C04FE96B959}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="diretorioOrigem">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\tmp</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8479D3EA-AE52-48E2-AF24-9C4C79CE1AAB}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Grupo">
+      <DTS:VariableValue
+        DTS:DataType="8">ETL</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{863A44C0-7593-44DE-8100-E734B8D07AD9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="QtdLinhasAtualizadas">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{372913B3-2B07-4605-8DC2-46A139D14377}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="QtdLinhasInseridas">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Leitura Diretorio"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:DelayValidation="True"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{68A747C0-4170-476E-805B-1F245666460A}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Leitura Diretorio">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="DTS.ForEachFileEnumerator.3"
+        DTS:DTSID="{F2329C35-ECDB-49A4-9B02-401A0879528B}"
+        DTS:ObjectName="{F2329C35-ECDB-49A4-9B02-401A0879528B}">
+        <DTS:PropertyExpression
+          DTS:Name="Directory">@[User::diretorioOrigem]</DTS:PropertyExpression>
+        <DTS:PropertyExpression
+          DTS:Name="FileSpec">@[User::arquivo]+"*.*"</DTS:PropertyExpression>
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\tmp" />
+            <FEFEProperty
+              FileSpec="consulta_vagas_2020*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F3E9FF76-45C8-4AAB-9615-102B618B3F0A}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DF_Carga_Dados_Eleitoral"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:EventHandlers>
+            <DTS:EventHandler
+              DTS:refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.EventHandlers[OnPostExecute]"
+              DTS:CreationName="OnPostExecute"
+              DTS:DTSID="{E9288958-43F9-4EA3-A032-549B088F05F1}"
+              DTS:EventID="511103568"
+              DTS:EventName="OnPostExecute"
+              DTS:LocaleID="-1">
+              <DTS:Variables>
+                <DTS:Variable
+                  DTS:CreationName=""
+                  DTS:Description="The propagate property of the event"
+                  DTS:DTSID="{87735112-FAFF-4872-860E-8F2312B08A90}"
+                  DTS:IncludeInDebugDump="6789"
+                  DTS:Namespace="System"
+                  DTS:ObjectName="Propagate">
+                  <DTS:VariableValue
+                    DTS:DataType="11">-1</DTS:VariableValue>
+                </DTS:Variable>
+              </DTS:Variables>
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.EventHandlers[OnPostExecute]\Execute TaskSQLT- Registra Log Data Flow"
+                  DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+                  DTS:Description="Execute SQL Task"
+                  DTS:DTSID="{F2C2492B-08FB-4428-840E-F88C941606FC}"
+                  DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="Execute TaskSQLT- Registra Log Data Flow"
+                  DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <SQLTask:SqlTaskData
+                      SQLTask:Connection="{1ADC5071-4678-418F-AC92-4B5FBB924DF3}"
+                      SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLog] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,'F'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="0"
+                        SQLTask:DtsVariableName="User::Grupo"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="1"
+                        SQLTask:DtsVariableName="System::PackageID"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="2"
+                        SQLTask:DtsVariableName="System::PackageName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="3"
+                        SQLTask:DtsVariableName="System::SourceID"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="4"
+                        SQLTask:DtsVariableName="System::SourceName"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="5"
+                        SQLTask:DtsVariableName="System::SourceDescription"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="129"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="6"
+                        SQLTask:DtsVariableName="User::QtdLinhasInseridas"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="3"
+                        SQLTask:ParameterSize="-1" />
+                      <SQLTask:ParameterBinding
+                        SQLTask:ParameterName="7"
+                        SQLTask:DtsVariableName="User::QtdLinhasAtualizadas"
+                        SQLTask:ParameterDirection="Input"
+                        SQLTask:DataType="3"
+                        SQLTask:ParameterSize="-1" />
+                    </SQLTask:SqlTaskData>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+            </DTS:EventHandler>
+          </DTS:EventHandlers>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destino Registros Existentes"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[##consulta_vagas]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DS_SQLServer_TempDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer_TempDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[DT_GERACAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DT_GERACAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_GERACAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[HH_GERACAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="HH_GERACAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[HH_GERACAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[ANO_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ANO_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[CD_TIPO_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_TIPO_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[NM_TIPO_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NM_TIPO_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[CD_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[DS_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DS_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[DT_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DT_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[DT_POSSE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DT_POSSE"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_POSSE]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[SG_UF]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SG_UF"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UF]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[SG_UE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SG_UE"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UE]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[NM_UE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NM_UE"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_UE]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[CD_CARGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_CARGO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_CARGO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[DS_CARGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DS_CARGO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_CARGO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].Columns[QT_VAGAS]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="QT_VAGAS"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[QT_VAGAS]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DT_GERACAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="HH_GERACAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="ANO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="CD_TIPO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="NM_TIPO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="CD_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DS_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DT_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DT_POSSE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="SG_UF" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="SG_UE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="NM_UE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="CD_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DS_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="QT_VAGAS" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destino Registros Novos"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[consulta_vagas]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                      connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[DT_GERACAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DT_GERACAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_GERACAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[HH_GERACAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="HH_GERACAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[HH_GERACAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[ANO_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ANO_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[CD_TIPO_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_TIPO_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[NM_TIPO_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NM_TIPO_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[CD_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[DS_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DS_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[DT_ELEICAO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DT_ELEICAO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_ELEICAO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[DT_POSSE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DT_POSSE"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_POSSE]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[SG_UF]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SG_UF"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UF]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[SG_UE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SG_UE"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UE]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[NM_UE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="NM_UE"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_UE]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[CD_CARGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_CARGO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_CARGO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[DS_CARGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="DS_CARGO"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_CARGO]" />
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].Columns[QT_VAGAS]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="QT_VAGAS"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[QT_VAGAS]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DT_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DT_GERACAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[HH_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="HH_GERACAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[ANO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="ANO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[CD_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="CD_TIPO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[NM_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="NM_TIPO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[CD_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="CD_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DS_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DS_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DT_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DT_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DT_POSSE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DT_POSSE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UF]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="SG_UF" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[SG_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="SG_UE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[NM_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="NM_UE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[CD_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="CD_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[DS_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="200"
+                          name="DS_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input].ExternalColumns[QT_VAGAS]"
+                          dataType="i4"
+                          name="QT_VAGAS" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas"
+                  componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="1046"
+                  name="Orgem Dados Vagas"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[FS_ArquivoVagas]"
+                      connectionManagerRefId="Package.ConnectionManagers[FS_ArquivoVagas]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DT_GERACAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_GERACAO]"
+                          name="DT_GERACAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[HH_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[HH_GERACAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[HH_GERACAO]"
+                          name="HH_GERACAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[ANO_ELEICAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[ANO_ELEICAO]"
+                          name="ANO_ELEICAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_TIPO_ELEICAO]"
+                          name="CD_TIPO_ELEICAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_TIPO_ELEICAO]"
+                          name="NM_TIPO_ELEICAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[CD_ELEICAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_ELEICAO]"
+                          name="CD_ELEICAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DS_ELEICAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_ELEICAO]"
+                          name="DS_ELEICAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DT_ELEICAO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_ELEICAO]"
+                          name="DT_ELEICAO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_POSSE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DT_POSSE]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DT_POSSE]"
+                          name="DT_POSSE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UF]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[SG_UF]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UF]"
+                          name="SG_UF"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[SG_UE]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UE]"
+                          name="SG_UE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[NM_UE]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[NM_UE]"
+                          name="NM_UE"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[CD_CARGO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_CARGO]"
+                          name="CD_CARGO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DS_CARGO]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[DS_CARGO]"
+                          name="DS_CARGO"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[QT_VAGAS]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[QT_VAGAS]"
+                          length="50"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[QT_VAGAS]"
+                          name="QT_VAGAS"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DT_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DT_GERACAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[HH_GERACAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="HH_GERACAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[ANO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ANO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[CD_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CD_TIPO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[NM_TIPO_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NM_TIPO_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[CD_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CD_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DS_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DS_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DT_ELEICAO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DT_ELEICAO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DT_POSSE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DT_POSSE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[SG_UF]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SG_UF" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[SG_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SG_UE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[NM_UE]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NM_UE" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[CD_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CD_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[DS_CARGO]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="DS_CARGO" />
+                        <externalMetadataColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].ExternalColumns[QT_VAGAS]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="QT_VAGAS" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes"
+                  componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Registros Existentes">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::QtdLinhasAtualizadas</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos"
+                  componentClassID="{E2697D8C-70DA-42B2-8208-A19CE3A9FE41}"
+                  contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+                  name="Registros Novos">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable to hold the row count."
+                      name="VariableName">User::QtdLinhasInseridas</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos.Inputs[Row Count Input 1]"
+                      hasSideEffects="true"
+                      name="Row Count Input 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos.Outputs[Row Count Output 1]"
+                      name="Row Count Output 1"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos.Inputs[Row Count Input 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados"
+                  componentClassID="{671046B0-AA63-4C9F-90E4-C06E0B710CE3}"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Validação de Dados"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[consulta_vagas]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[consulta_vagas]) [refTable]
+where [refTable].[SG_UF] = ? and [refTable].[SG_UE] = ? and [refTable].[CD_CARGO] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DT_GERACAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="HH_GERACAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="ANO_ELEICAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CD_TIPO_ELEICAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NM_TIPO_ELEICAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CD_ELEICAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DS_ELEICAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DT_ELEICAO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DT_POSSE" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SG_UF" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SG_UE" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NM_UE" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CD_CARGO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DS_CARGO" dataType="DT_STR" length="200" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="QT_VAGAS" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UF]};#{Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UE]};#{Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_CARGO]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DS_SQLServer]"
+                      connectionManagerRefId="Package.ConnectionManagers[DS_SQLServer]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input].Columns[SG_UF]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SG_UF"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UF]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">SG_UF</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input].Columns[SG_UE]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="SG_UE"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[SG_UE]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">SG_UE</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input].Columns[CD_CARGO]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CD_CARGO"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output].Columns[CD_CARGO]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">CD_CARGO</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Flat File Source Output]"
+                  endId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Inputs[Lookup Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas.Outputs[Flat File Source Output]" />
+                <path
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Lookup Match Output]"
+                  endId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes.Inputs[Row Count Input 1]"
+                  name="Lookup Match Output"
+                  startId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Lookup No Match Output]"
+                  endId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos.Inputs[Row Count Input 1]"
+                  name="Lookup No Match Output"
+                  startId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Row Count Output 11]"
+                  endId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos.Outputs[Row Count Output 1]" />
+                <path
+                  refId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Row Count Output 1]"
+                  endId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes.Inputs[OLE DB Destination Input]"
+                  name="Row Count Output 1"
+                  startId="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes.Outputs[Row Count Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Leitura Diretorio\Move Arquivo Importado"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:DelayValidation="True"
+          DTS:Description="File System Task"
+          DTS:DTSID="{82A55510-1643-481E-9573-3FBBCFF5D9A7}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.FileSystemTask.FileSystemTask, Microsoft.SqlServer.FileSystemTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Move Arquivo Importado"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskOperationType="MoveFile"
+              TaskOverwriteDestFile="True"
+              TaskSourcePath="User::arquivoCompleto"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::diretorioImportado"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Leitura Diretorio.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{44B1FAC5-B9D7-4E41-A1BD-1AA60CA64CD3}"
+          DTS:From="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Leitura Diretorio\Move Arquivo Importado" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{26446D6F-D386-4AD2-A352-6BBDCEA5ADF9}"
+          DTS:ObjectName="{26446D6F-D386-4AD2-A352-6BBDCEA5ADF9}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::arquivoCompleto" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQLTask - Atualiza Tabela"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:DelayValidation="True"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7784b535-ccfd-4f55-99c8-09f102f2858c}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQLTask - Atualiza Tabela"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{F85240DF-F62B-4404-A2B8-618B5483D0CB}"
+          SQLTask:SqlStatementSource="UPDATE A&#xA;&#xA;SET&#xA;&#xA;A.[DT_GERACAO] = b.[DT_GERACAO]&#xA;,a.[HH_GERACAO] = b.[HH_GERACAO]&#xA;,a.[ANO_ELEICAO] = b.[ANO_ELEICAO]&#xA;,a.[NM_TIPO_ELEICAO] = b.[NM_TIPO_ELEICAO]&#xA;,a.[CD_ELEICAO] = b.[CD_ELEICAO]&#xA;,a.[DS_ELEICAO] = b.[DS_ELEICAO]&#xA;,a.[DT_ELEICAO] = b.[DT_ELEICAO]&#xA;,a.[DT_POSSE] = b.[DT_POSSE]&#xA;,a.[NM_UE] = b.[NM_UE]&#xA;,a.[DS_CARGO] = b.[DS_CARGO]&#xA;,a.[QT_VAGAS] = b.[QT_VAGAS]&#xA;&#xA;FROM [DBDBAASSISTS].[dbo].[consulta_vagas] a&#xA;&#xA;inner join ##tmp_consulta_vagas_amostra b&#xA;&#xA;on a.[CD_CARGO] = b.[CD_CARGO]&#xA;and a.[CD_TIPO_ELEICAO] = b.[CD_TIPO_ELEICAO]&#xA;and a.[SG_UF] = b.[SG_UF]&#xA;and a.[SG_UE] = b.[SG_UE]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQLTask - Cria Tabela Temporária"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{65A34CF6-82E5-4AF4-84BB-78D50DE2EBE9}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQLTask - Cria Tabela Temporária"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5950C930-BEC7-48F7-9017-5D617EF43D11}"
+          SQLTask:SqlStatementSource="IF OBJECT_ID ('TEMPDB..##consulta_vagas') IS NOT NULL &#xA;DROP TABLE ##consulta_vagas;&#xA;&#xA;&#xA;CREATE TABLE ##consulta_vagas(&#xA;&#x9;[DT_GERACAO] [varchar](200) NULL,&#xA;&#x9;[HH_GERACAO] [varchar](200) NULL,&#xA;&#x9;[ANO_ELEICAO] [varchar](200) NULL,&#xA;&#x9;[CD_TIPO_ELEICAO] [varchar](200) NULL,&#xA;&#x9;[NM_TIPO_ELEICAO] [varchar](200) NULL,&#xA;&#x9;[CD_ELEICAO] [varchar](200) NULL,&#xA;&#x9;[DS_ELEICAO] [varchar](200) NULL,&#xA;&#x9;[DT_ELEICAO] [varchar](200) NULL,&#xA;&#x9;[DT_POSSE] [varchar](200) NULL,&#xA;&#x9;[SG_UF] [varchar](200) NULL,&#xA;&#x9;[SG_UE] [varchar](200) NULL,&#xA;&#x9;[NM_UE] [varchar](200) NULL,&#xA;&#x9;[CD_CARGO] [varchar](200) NULL,&#xA;&#x9;[DS_CARGO] [varchar](200) NULL,&#xA;&#x9;[QT_VAGAS] [int] NULL&#xA;)" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{5F0F5E93-EDD4-4CEA-A604-BCD2D5795BB8}"
+      DTS:From="Package\SQLTask - Cria Tabela Temporária"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Leitura Diretorio" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5B6801BD-EC96-445F-BF4F-48E8E5A52D6F}"
+      DTS:From="Package\Leitura Diretorio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQLTask - Atualiza Tabela" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnError]"
+      DTS:CreationName="OnError"
+      DTS:DTSID="{2CFC67BE-FB46-4B28-8770-E5B6DC06F2ED}"
+      DTS:EventID="0"
+      DTS:EventName="OnError"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{E0BC72F0-455A-4A15-B48A-A66B27CFE970}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnError]\Log Execução com Erro"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{ef446207-4d22-48c4-adf1-8e6c56a2b63d}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Execução com Erro"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1ADC5071-4678-418F-AC92-4B5FBB924DF3}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLogErro] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,''" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::ErrorCode"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::ErrorDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPostExecute]"
+      DTS:CreationName="OnPostExecute"
+      DTS:DTSID="{5ED5FBF3-0707-4F6E-9FC8-6CE6563D0A6F}"
+      DTS:EventID="511103568"
+      DTS:EventName="OnPostExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{8A824DB4-DEE5-4458-9B9F-0F28EE62DD14}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPostExecute]\Log Execução Pós Processamento"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F5B12EC5-364E-49E1-A190-E1F5E9132771}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Execução Pós Processamento"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1ADC5071-4678-418F-AC92-4B5FBB924DF3}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLog] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,0&#xA;  ,0&#xA;  ,'F'" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Grupo"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnPreExecute]"
+      DTS:CreationName="OnPreExecute"
+      DTS:DTSID="{57E9AB1F-201B-4C66-8A3E-FF9F97FE0A9E}"
+      DTS:EventID="0"
+      DTS:EventName="OnPreExecute"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{82D263A4-94C5-4746-9818-3CD675DA19C3}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnPreExecute]\Log Execução Inicio Processamento"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{FCC05000-7367-4C15-898F-E2E8DAC1A64E}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Log Execução Inicio Processamento"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{1ADC5071-4678-418F-AC92-4B5FBB924DF3}"
+              SQLTask:SqlStatementSource="EXECUTE [dbo].[STP_SIU_CarregaLog] &#xA;   ?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,?&#xA;  ,0&#xA;  ,0&#xA;  ,'I'&#xA;&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Grupo"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="System::SourceID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="System::SourceName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="System::SourceDescription"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202.666666666667,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral"
+          TopLeft="17.2886861555189,31.5238063136737" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Leitura Diretorio\Move Arquivo Importado"
+          TopLeft="32.9523765175115,137.80951880614" />
+        <EdgeLayout
+          Id="Package\Leitura Diretorio.PrecedenceConstraints[Constraint]"
+          TopLeft="115.287198003182,73.5238063136737">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.2857124924663"
+              Start="0,0"
+              End="0,56.7857124924663">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.7857124924663" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="234,234.666666666667"
+          Size="234,277.333333333334"
+          Id="Package\Leitura Diretorio"
+          TopLeft="443.458328692242,40.1190470268329" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\SQLTask - Cria Tabela Temporária"
+          TopLeft="138.339284576742,153.166664535801" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="378.339284576742,176.47618911465">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.1190441155007,0"
+              Start="0,0"
+              End="57.6190441155007,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="57.6190441155007,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="202,42"
+          Id="Package\SQLTask - Atualiza Tabela"
+          TopLeft="759.867053093034,152.119051056107" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="677.458328692242,175.952382374803">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.4087244007922,0"
+              Start="0,0"
+              End="74.9087244007922,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="74.9087244007922,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.666666666667,42"
+          Id="Package.EventHandlers[OnPostExecute]\Log Execução Pós Processamento"
+          TopLeft="32,117" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="247,42"
+          Id="Package.EventHandlers[OnPreExecute]\Log Execução Inicio Processamento"
+          TopLeft="51,123" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Novos"
+          TopLeft="191.071425724243,172.714282625914" />
+        <NodeLayout
+          Size="192.666666666667,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos"
+          TopLeft="179.952378442245,284.357143521309" />
+        <NodeLayout
+          Size="172.666666666667,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Registros Existentes"
+          TopLeft="666.66665673256,172.095235017935" />
+        <NodeLayout
+          Size="174.666666666667,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Orgem Dados Vagas"
+          TopLeft="413.833328552544,24.4999997675419" />
+        <NodeLayout
+          Size="171.333333333334,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados"
+          TopLeft="418.452374716955,129.380950067441" />
+        <NodeLayout
+          Size="211.333333333334,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes"
+          TopLeft="647.619037968772,282.904756846031" />
+        <EdgeLayout
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Lookup Match Output]"
+          TopLeft="589.785708050288,150.380950067441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="76.8809486822713,42.7142849504948"
+              Start="0,0"
+              End="69.3809486822713,42.7142849504948">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.4404743411357,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.4404743411357,0"
+                    Point2="38.4404743411357,0"
+                    Point3="38.4404743411357,4" />
+                  <mssgle:LineSegment
+                    End="38.4404743411357,38.7142849504948" />
+                  <mssgle:CubicBezierSegment
+                    Point1="38.4404743411357,38.7142849504948"
+                    Point2="38.4404743411357,42.7142849504948"
+                    Point3="42.4404743411357,42.7142849504948" />
+                  <mssgle:LineSegment
+                    End="69.3809486822713,42.7142849504948" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-9.75091237761431,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Flat File Source Output]"
+          TopLeft="502.64285163475,66.4999997675419">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.8809502998988"
+              Start="0,0"
+              End="0,55.3809502998988">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.3809502998988" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Row Count Output 1]"
+          TopLeft="753.142847350666,214.095235017935">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.8095218280953"
+              Start="0,0"
+              End="0,61.3095218280953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.3095218280953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Row Count Output 11]"
+          TopLeft="268.071425724243,214.714282625914">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.21428605133571,69.6428608953953"
+              Start="0,0"
+              End="8.21428605133571,62.1428608953953">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.8214304476977" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.8214304476977"
+                    Point2="0,34.8214304476977"
+                    Point3="4,34.8214304476977" />
+                  <mssgle:LineSegment
+                    End="4.21428605133571,34.8214304476977" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.21428605133571,34.8214304476977"
+                    Point2="8.21428605133571,34.8214304476977"
+                    Point3="8.21428605133571,38.8214304476977" />
+                  <mssgle:LineSegment
+                    End="8.21428605133571,62.1428608953953" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.Paths[Lookup No Match Output]"
+          TopLeft="418.452374716955,150.380950067441">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-73.3809489927121,43.333332558473"
+              Start="0,0"
+              End="-65.8809489927121,43.333332558473">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-32.690474496356,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32.690474496356,0"
+                    Point2="-36.690474496356,0"
+                    Point3="-36.690474496356,4" />
+                  <mssgle:LineSegment
+                    End="-36.690474496356,39.333332558473" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36.690474496356,39.333332558473"
+                    Point2="-36.690474496356,43.333332558473"
+                    Point3="-40.690474496356,43.333332558473" />
+                  <mssgle:LineSegment
+                    End="-65.8809489927121,43.333332558473" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-92.496861215106,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.EventHandlers[OnPostExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="162.666666666667,42"
+          Id="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral.EventHandlers[OnPostExecute]\Execute TaskSQLT- Registra Log Data Flow"
+          TopLeft="35,95" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Novos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Validação de Dados">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[consulta_vagas]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Leitura Diretorio\DF_Carga_Dados_Eleitoral\Destino Registros Existentes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnError]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="189.333333333334,42"
+          Id="Package.EventHandlers[OnError]\Log Execução com Erro"
+          TopLeft="60,60" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
